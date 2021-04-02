@@ -4,7 +4,7 @@ import { getServerSideProps as getServerSidePropsIndex } from '../index'
 import Head from 'next/head'
 import { Photo as PhotoInterface } from '../../components/organisms/CarouselPhotos/CarouselPhotos';
 
-export default function Photo({ title, image, url, photos, tags, about }) {
+export default function Photo({ slug, title, image, url, photos, tags, about }) {
   return (
     <Default>
       <Head>
@@ -19,6 +19,7 @@ export default function Photo({ title, image, url, photos, tags, about }) {
         )}
       </Head>
       <Home
+        slug={slug}
         photos={photos}
         tags={tags}
         about={about}
@@ -28,6 +29,7 @@ export default function Photo({ title, image, url, photos, tags, about }) {
 }
 
 export async function getServerSideProps(context: any) {
+  let slug = undefined
   let title = 'julia.photos'
   let image = undefined
   let url = undefined
@@ -37,6 +39,7 @@ export async function getServerSideProps(context: any) {
       return photo.slug === context.params.slug
     })
     if (photo) {
+      slug = photo.slug
       title = `${photo.title} - ${title}`
       image = photo.url
       url = photo.fullLink
@@ -46,6 +49,7 @@ export async function getServerSideProps(context: any) {
     ...result,
     props: {
       ...result.props,
+      slug,
       title,
       image,
       url,

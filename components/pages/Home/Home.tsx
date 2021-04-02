@@ -12,12 +12,13 @@ import { Photo } from '../../organisms/CarouselPhotos/CarouselPhotos'
 import { classes } from '../../../utils'
 
 export interface Props {
+  slug?: string;
   photos: any[];
   tags: any[];
   about: any;
 }
 
-const Home: React.FC<Props> = ({ photos, tags, about }) => {
+const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
   const router = useRouter()
   const carouselPhotosRef: React.Ref<any> = useRef()
   const filters = [
@@ -98,6 +99,19 @@ const Home: React.FC<Props> = ({ photos, tags, about }) => {
       window.removeEventListener('resize', onResize)
     }
   }, [])
+
+  useEffect(() => {
+    const index = filteredPhotos
+      .map(item => item.slug)
+      .indexOf(slug)
+    if (index > -1) {
+      const photo = filteredPhotos.find(item => {
+        return item.slug === slug
+      })
+      setCurrentPhotoIndex(index)
+      setCurrentPhoto(photo)
+    }
+  }, [filteredPhotos, slug])
 
   return (
     <Flex
