@@ -35,6 +35,7 @@ const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
     })
   )
 
+  const [firstLoad, setFirstLoad] = useState(true)
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
   const [currentFilter, setCurrentFilter] = useState('all')
   const [currentPhoto, setCurrentPhoto] = useState(photos[0])
@@ -59,10 +60,10 @@ const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
       .indexOf(photo.url)
     setCurrentPhotoIndex(index)
     setIsHidding(true)
-    router.push(photo.link)
     setTimeout(() => {
       setCurrentPhoto(photo)
       setIsHidding(false)
+      router.push(photo.link)
     }, 200)
   }
 
@@ -101,15 +102,18 @@ const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
   }, [])
 
   useEffect(() => {
-    const index = filteredPhotos
-      .map(item => item.slug)
-      .indexOf(slug)
-    if (index > -1) {
-      const photo = filteredPhotos.find(item => {
-        return item.slug === slug
-      })
-      setCurrentPhotoIndex(index)
-      setCurrentPhoto(photo)
+    if (firstLoad) {
+      const index = filteredPhotos
+        .map(item => item.slug)
+        .indexOf(slug)
+      if (index > -1) {
+        const photo = filteredPhotos.find(item => {
+          return item.slug === slug
+        })
+        setCurrentPhotoIndex(index)
+        setCurrentPhoto(photo)
+      }
+      setFirstLoad(false)
     }
   }, [filteredPhotos, slug])
 
