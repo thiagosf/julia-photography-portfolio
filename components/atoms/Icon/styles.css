@@ -1,0 +1,21 @@
+.icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+}
+
+.icon--small {
+  width: 18px;
+  height: 18px;
+}
+
+.icon--large {
+  width: 64px;
+  height: 64px;
+}
+
+.icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

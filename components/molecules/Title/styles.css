@@ -1,0 +1,14 @@
+.title {
+  display: inline-block;
+  border-bottom: 5px solid var(--yellow-900);
+  color: var(--white);
+  font-size: 42px;
+  font-family: var(--font-highlighted);
+}
+
+@media (min-width: 768px) {
+  .title {
+    font-size: 72px;
+    border-bottom: 10px solid var(--yellow-900);
+  }
+}

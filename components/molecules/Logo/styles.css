@@ -1,0 +1,35 @@
+.logo {
+  background: linear-gradient(-20deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.logo svg {
+  width: 50px;
+  height: 40px;
+}
+
+.logo--white {
+  color: var(--white);
+}
+
+.logo--text {
+  white-space: nowrap;
+  margin-left: 15px;
+  line-height: 1.4;
+  font-size: 18px;
+}
+
+.logo--text span {
+  font-size: 18px;
+}
+
+.logo--text strong {
+  font-size: 11px;
+}
+
+@media (min-width: 768px) {
+  .logo--text strong {
+    font-size: 14px;
+  }
+}
