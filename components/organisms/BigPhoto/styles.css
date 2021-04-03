@@ -32,8 +32,7 @@
   opacity: 0;
 }
 
-.big-photo--image,
-.big-photo--image-fullscreen {
+.big-photo--image {
   transition: opacity 300ms var(--ease-out-quad);
   position: absolute;
   pointer-events: none;
@@ -48,17 +47,6 @@
   background-position: center center;
 }
 
-.big-photo--image-fullscreen {
-  opacity: 0;
-  background-size: contain;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  /* width: 200%; */
-  transform: scale(0.95, 0.95);
-}
-
 .big-photo--button-fullscreen {
   transition: background 300ms var(--ease-out-quad);
   position: absolute;
@@ -70,6 +58,7 @@
   background: var(--black-a10);
   padding: 20px;
 }
+
 .big-photo--button-fullscreen .icon {
   width: 20px;
   height: 20px;
@@ -108,10 +97,6 @@
   transform: translateX(0px) scale(1, 1);
 }
 
-.big-photo--is-loading .big-photo--content::after {
-  /*animation: bigPhotoLoading 1000ms ease-in-out infinite;*/
-}
-
 .big-photo--is-loading .big-photo--image {
   opacity: 0;
 }
@@ -128,22 +113,29 @@
   opacity: 0;
 }
 
-.big-photo--is-fullscreen .big-photo--image {
-  transition-duration: 300ms;
-  opacity: 0;
+.big-photo--image--img {
+  transition: all 500ms var(--ease-in-out-quad);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
-.big-photo--is-fullscreen .big-photo--image-fullscreen {
-  opacity: 1;
-  transition-delay: 300ms;
-  transform: scale(1, 1);
+.big-photo--is-fullscreen .big-photo--image {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
 }
 
 .big-photo--is-hidding .big-photo--image {
   transition: var(--transition-fast);
-  opacity: 0;
-  transform: scale(1.03);
 }
+
 .big-photo--is-hidding .big-photo--title,
 .big-photo--is-hidding .big-photo--tags {
   transition: var(--transition-fast);
@@ -174,6 +166,25 @@
   }
   .big-photo--tags {
     font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .big-photo,
+  .big-photo--content {
+    overflow: initial;
+  }
+
+  .big-photo--image {
+    transition: all 500ms var(--ease-in-out-quad);
+    position: relative;
+    width: 50vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .big-photo--info {
+    overflow: hidden;
   }
 }
 

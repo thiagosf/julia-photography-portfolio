@@ -36,9 +36,9 @@ const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
   )
 
   const [firstLoad, setFirstLoad] = useState(true)
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0)
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(-1)
   const [currentFilter, setCurrentFilter] = useState('all')
-  const [currentPhoto, setCurrentPhoto] = useState(photos[0])
+  const [currentPhoto, setCurrentPhoto] = useState(null)
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [isHidding, setIsHidding] = useState(false)
   const [aboutActive, setAboutActive] = useState(false)
@@ -134,13 +134,15 @@ const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
         />
       </Box>
       <Box className="home__big-photo">
-        <BigPhoto
-          url={currentPhoto.url}
-          title={currentPhoto.title}
-          tags={currentPhoto.tags}
-          onChangeFullscreen={onChangeFullscreen}
-          isHidding={isHidding}
-        />
+        {currentPhoto && (
+          <BigPhoto
+            url={currentPhoto.url}
+            title={currentPhoto.title}
+            tags={currentPhoto.tags}
+            onChangeFullscreen={onChangeFullscreen}
+            isHidding={isHidding}
+          />
+        )}
       </Box>
       <Box className="home__carousel-photos">
         <CarouselPhotos

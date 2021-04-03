@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Flex, Box, Text, Icon } from '../../atoms'
 import { classes } from '../../../utils'
 
@@ -19,8 +19,11 @@ const BigPhoto: React.FC<Props> = ({
   onChangeFullscreen,
   ...props
 }) => {
+  const boxRef: React.Ref<any> = useRef()
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [imageWidth, setImageWidth] = useState<[number, number]>([0, 0])
+  const [imageHeight, setImageHeight] = useState<[number, number]>([0, 0])
   const formattedTags = tags.map(item => `#${item}`).join(' ')
   const bigPhotoClasses = classes({
     'big-photo': true,
@@ -42,6 +45,42 @@ const BigPhoto: React.FC<Props> = ({
     img.src = url
     img.onload = function () {
       setIsLoaded(true)
+
+      let width: number = img.width
+      let height: number = img.height
+      let widthFull: number
+      let heightFull: number
+      let refWidth = window.innerWidth
+      let refHeight = window.innerHeight
+
+      if (refWidth < 1024) {
+        refWidth = boxRef.current.offsetWidth
+        refHeight = boxRef.current.offsetHeight
+      }
+
+      if (width > height) {
+        width = width * refHeight / height
+        height = refHeight
+        widthFull = width
+        heightFull = height
+      } else {
+        height = height * refWidth / width
+        width = refWidth
+        widthFull = width * refHeight / height
+        heightFull = refHeight
+      }
+
+      if (refHeight > refWidth) {
+        if (height < refHeight) {
+          width = width * refHeight / height
+          height = refHeight
+        }
+        heightFull = height * refWidth / width
+        widthFull = refWidth
+      }
+
+      setImageWidth([width, widthFull])
+      setImageHeight([height, heightFull])
     }
   }, [url])
 
@@ -49,16 +88,21 @@ const BigPhoto: React.FC<Props> = ({
     <Flex
       isColumn
       className={bigPhotoClasses}
+      ref={boxRef}
       {...props}
     >
       <Box
         className="big-photo--image"
-        style={{ backgroundImage: `url(${url}` }}
-      />
-      <Box
-        className="big-photo--image-fullscreen"
-        style={{ backgroundImage: `url(${url}` }}
-      />
+      >
+        <Box
+          className="big-photo--image--img"
+          style={{
+            backgroundImage: `url(${url})`,
+            width: !isFullscreen ? imageWidth[0] : imageWidth[1],
+            height: !isFullscreen ? imageHeight[0] : imageHeight[1],
+          }}
+        />
+      </Box>
       <Box
         className="big-photo--button-fullscreen"
         onClick={toggleFullscreen}

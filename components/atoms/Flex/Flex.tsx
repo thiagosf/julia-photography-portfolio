@@ -2,6 +2,7 @@ import React from 'react'
 import { classes } from '../../../utils'
 
 export interface Props {
+  ref?: React.Ref<any>,
   className?: string,
   inline?: boolean,
   children?: React.ReactNode,
@@ -15,7 +16,7 @@ export interface Props {
   onClick?: () => void
 }
 
-const Flex: React.FC<Props> = ({
+const Flex: React.FC<Props> = React.forwardRef(({
   className,
   inline = false,
   isColumn = false,
@@ -26,7 +27,7 @@ const Flex: React.FC<Props> = ({
   grow = false,
   children,
   ...props
-}) => {
+}, ref) => {
   const options: { [key: string]: boolean } = {
     'flex': true,
     'flex--inline': inline,
@@ -42,10 +43,10 @@ const Flex: React.FC<Props> = ({
   }
   const flexClasses = classes(options)
   return (
-    <div className={flexClasses} {...props}>
+    <div className={flexClasses} {...props} ref={ref}>
       {children}
     </div>
   )
-}
+})
 
 export default Flex
