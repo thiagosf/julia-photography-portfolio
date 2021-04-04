@@ -50,7 +50,7 @@ const BigPhoto: React.FC<Props> = ({
       let height: number = img.height
       let widthFull: number
       let heightFull: number
-      let refWidth = window.innerWidth
+      let refWidth = window.innerWidth / 2
       let refHeight = window.innerHeight
 
       if (refWidth < 1024) {

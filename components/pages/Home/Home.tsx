@@ -112,6 +112,9 @@ const Home: React.FC<Props> = ({ slug, photos, tags, about }) => {
         })
         setCurrentPhotoIndex(index)
         setCurrentPhoto(photo)
+      } else {
+        setCurrentPhotoIndex(0)
+        setCurrentPhoto(filteredPhotos[0])
       }
       setFirstLoad(false)
     }
