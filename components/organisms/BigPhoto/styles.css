@@ -83,9 +83,14 @@
   flex-grow: 0;
   font-weight: 400;
   font-size: 32px;
+  line-height: 1;
   opacity: 1;
   transform: translateX(0px) scale(1, 1);
   font-family: var(--font-highlighted);
+  color: white;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: 1px white;
+  margin: 0 0 20px 0;
 }
 
 .big-photo--tags {
@@ -161,8 +166,9 @@
     right: auto;
   }
   .big-photo--title {
-    font-size: 48px;
-    max-width: 60%;
+    font-size: 60px;
+    line-height: 0.8;
+    max-width: 80%;
   }
   .big-photo--tags {
     font-size: 20px;
@@ -185,6 +191,13 @@
 
   .big-photo--info {
     overflow: hidden;
+  }
+
+}
+
+@media (min-width: 1025px) {
+  .big-photo--title {
+    font-size: 80px;
   }
 }
 
