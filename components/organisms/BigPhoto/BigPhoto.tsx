@@ -19,11 +19,14 @@ const BigPhoto: React.FC<Props> = ({
   onChangeFullscreen,
   ...props
 }) => {
+  const refWidth = window.innerWidth
+  const refHeight = window.innerHeight
+
   const boxRef: React.Ref<any> = useRef()
   const [isLoaded, setIsLoaded] = useState(false)
   const [isFullscreen, setIsFullscreen] = useState(false)
-  const [imageWidth, setImageWidth] = useState<[number, number]>([0, 0])
-  const [imageHeight, setImageHeight] = useState<[number, number]>([0, 0])
+  const [imageWidth, setImageWidth] = useState<[number, number]>([refWidth, refWidth])
+  const [imageHeight, setImageHeight] = useState<[number, number]>([refHeight, refHeight])
   const formattedTags = tags.map(item => `#${item}`).join(' ')
   const bigPhotoClasses = classes({
     'big-photo': true,
