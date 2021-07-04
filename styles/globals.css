@@ -21,7 +21,8 @@
   /*== gradients */
 
   /* --main-gradient: linear-gradient(80deg, var(--purple-700), var(--gray-100)); */
-  --main-gradient: linear-gradient(80deg, #16C352, #2CB994, #414D95);
+  /* --main-gradient: linear-gradient(80deg, #16C352, #2CB994, #414D95); */
+  --main-gradient: linear-gradient(20deg, #000000, #0F5F3A);
 
   /*== grid */
 

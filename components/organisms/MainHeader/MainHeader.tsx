@@ -20,7 +20,7 @@ const MainHeader: React.FC<Props> = ({ onClick, ...props }) => {
         className="main-header__social-networks"
       >
         <Icon name="info" onClick={() => onClick('info')} />
-        <a href="https://www.instagram.com/fotosd_ju/">
+        <a href="https://www.instagram.com/jsf.photography_/">
           <Icon name="instagram" />
         </a>
         <a href="mailto:hi@julias.photos">
