@@ -1,12 +1,12 @@
-import { Default } from '../../components/templates'
-import Home from '../../components/pages/Home/Home'
+// import { Default } from '../../components/templates'
+// import Home from '../../components/pages/Home/Home'
 import { getServerSideProps as getServerSidePropsIndex } from '../index'
 import Head from 'next/head'
-import { Photo as PhotoInterface } from '../../components/organisms/CarouselPhotos/CarouselPhotos';
+// import { Photo as PhotoInterface } from '../../components/organisms/CarouselPhotos/CarouselPhotos';
 
 export default function Photo({ slug, title, image, url, photos, tags, about }) {
   return (
-    <Default>
+    <div>
       <Head>
         <title>{title}</title>
         {title && (
@@ -18,13 +18,28 @@ export default function Photo({ slug, title, image, url, photos, tags, about }) 
           </>
         )}
       </Head>
-      <Home
+      <div>
+        {JSON.stringify(slug)}
+        <hr />
+        {JSON.stringify(title)}
+        <hr />
+        {JSON.stringify(image)}
+        <hr />
+        {JSON.stringify(url)}
+        <hr />
+        {JSON.stringify(photos)}
+        <hr />
+        {JSON.stringify(tags)}
+        <hr />
+        {JSON.stringify(about)}
+      </div>
+      {/* <Home
         slug={slug}
         photos={photos}
         tags={tags}
         about={about}
-      />
-    </Default>
+      /> */}
+    </div>
   )
 }
 
@@ -35,7 +50,7 @@ export async function getServerSideProps(context: any) {
   let url = undefined
   const result = await getServerSidePropsIndex(context)
   if (result.props.photos) {
-    const photo = result.props.photos.find((photo: PhotoInterface) => {
+    const photo = result.props.photos.find((photo: any) => {
       return photo.slug === context.params.slug
     })
     if (photo) {

@@ -1,5 +1,0 @@
-export { BigPhoto } from './BigPhoto'
-export { MainHeader } from './MainHeader'
-export { CarouselPhotos } from './CarouselPhotos'
-export { FilterLinks } from './FilterLinks'
-export { About } from './About'
