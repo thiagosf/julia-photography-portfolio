@@ -12,7 +12,7 @@ export interface Props {
 export const MainTemplate: React.FC<Props> = function ({ currentFilter, filters, onFilter, children }) {
   return (
     <div
-      className="min-h-screen bg-custom-gray-900 text-white md:flex md:overflow-auto md:h-screen"
+      className="min-h-screen bg-gradient-to-tr from-custom-gray-900 to-black  text-white md:flex md:overflow-auto md:h-screen"
     >
       <div className="fixed z-10 top-0 left-0 right-0 mix-blend-difference md:w-sidebar md:sticky">
         <div>
