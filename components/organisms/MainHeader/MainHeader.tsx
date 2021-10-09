@@ -33,7 +33,9 @@ export const MainHeader: React.FC<Props> = function ({ currentFilter, filters, o
     <div className="flex flex-col px-8 py-4 pt-8">
       <div className="flex mb-2 md:mb-4 pb-4">
         <div className="flex-grow">
-          <LogoSvg className="w-12" />
+          <a href="/">
+            <LogoSvg className="w-12" />
+          </a>
         </div>
         <div className="flex items-center">
           {/* <MainHeaderIcon onClick={toggleShowInfo}>
@@ -58,7 +60,7 @@ export const MainHeader: React.FC<Props> = function ({ currentFilter, filters, o
         </div>
       )}
       <div className="border-b border-white border-opacity-10"></div>
-      <div className="flex border-b border-white border-opacity-10 pb-2 md:pb-4">
+      <div className="flex border-b border-white border-opacity-10 py-2 md:py-4">
         <Filters currentFilter={currentFilter} filters={filters} onFilter={onFilter} />
       </div>
     </div>

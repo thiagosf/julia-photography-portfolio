@@ -23,7 +23,7 @@ export const Filter: React.FC<Props> = function ({ label, value, actived, onClic
     'sm:text-sm',
   ]
   if (actived) {
-    classes.push('font-bold underline')
+    classes.push('underline opacity-30')
   }
   return (
     <div

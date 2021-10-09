@@ -26,7 +26,9 @@ export default function HomePage({ photos, tags, about, filters }) {
         filters={filters}
         onFilter={onFilter}
       >
-        <Gallery photos={filteredPhotos} />
+        <Gallery
+          photos={filteredPhotos}
+        />
       </MainTemplate>
     </div>
   )
