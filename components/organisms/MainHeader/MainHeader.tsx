@@ -41,7 +41,7 @@ export const MainHeader: React.FC<Props> = function ({ currentFilter, filters, o
           {/* <MainHeaderIcon onClick={toggleShowInfo}>
             <InfoSvg className="w-6 h-6 md:w-4 md:h-4" />
           </MainHeaderIcon> */}
-          <a href="https://www.instagram.com/sf.juphotos" target="_blank" rel="noreferrer">
+          <a href="https://www.instagram.com/_sfjulia/" target="_blank" rel="noreferrer">
             <MainHeaderIcon>
               <InstagramSvg className="w-6 h-6 md:w-4 md:h-4" />
             </MainHeaderIcon>
