@@ -14,7 +14,7 @@ export const MainTemplate: React.FC<Props> = function ({ currentFilter, filters,
     <div
       className="min-h-screen bg-gradient-to-tr from-custom-gray-900 to-black  text-white md:flex md:overflow-auto md:h-screen"
     >
-      <div className="fixed z-10 top-0 left-0 right-0 mix-blend-difference md:w-sidebar md:sticky">
+      <div className="fixed z-10 top-0 left-0 right-0 mix-blend-difference md:w-sidebar">
         <div>
           <MainHeader currentFilter={currentFilter} filters={filters} onFilter={onFilter} />
         </div>

@@ -18,14 +18,14 @@ export default function HomePage({ photo, filters }) {
         filters={filters}
         onFilter={onFilter}
       >
-        <div className="flex p-4 pt-40 md:p-12 md:pt-12 flex-col">
+        <div className="flex p-1 flex-col">
           <img
             src={photo.url}
             alt={photo.title}
             className="w-full"
           />
           <div className="">
-            <div className="text-base pt-5 flex justify-between w-full opacity-50">
+            <div className="text-base p-5 flex justify-between w-full opacity-50">
               <div className="font-bold">{photo.title}</div>
               <div>#{photo.tags.join(' #')}</div>
             </div>
